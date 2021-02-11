@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>蟠桃🍑</title>
+  </head>
+  <body>
+    <noscript>
+      <strong>Please enable JavaScript.</strong>
+    </noscript>
+    <div id="app"></div>
+    <script src="main.js" type="text/javascript"></script>
+    <script crossorigin="anonymous" integrity="sha384-Syuu42tkQgszyxNSHWSh4xouXRhTwTLEj9qTUCa3YPdoZYLOIGmFq6z1VTMjS8KL" src="https://lib.baomitu.com/vConsole/3.3.0/vconsole.min.js"></script>
+  </body>
+</html>
+
+<script>
+//第二步配置
+window.vConsole = new window.VConsole({
+  defaultPlugins: ['system', 'network', 'element', 'storage'], // 可以在此设定要默认加载的面板
+  maxLogNumber: 1000,
+  onReady: function() {
+  // console.log('vConsole is ready.');
+  },
+  onClearLog: function() {
+  // console.log('on clearLog');
+  }
+}); 
+</script>
