@@ -14,7 +14,7 @@
         type="password"
         name="密码"
         label="密码"
-        placeholder="密码"
+        placeholder="请输入密码"
         required
         :rules="[{ required: true, message: '请填写密码' }]"
       />
@@ -29,6 +29,7 @@
 
 <script>
   import axios from 'axios'
+  import qs from 'qs'
 
   export default {
     name: 'LoginPage',
@@ -44,15 +45,35 @@
           this.$toast("用户名不能为空");
           return false;  
         } 
-        if (this. password.length <= 0) {
+        if (this.password.length <= 0) {
           this.$toast("密码不能为空");
           return false;  
         }    
         
-        axios.get('https://www.baidu.com').then(function(res) {
-          this.$toast(res)
-        }) 
-      },
+        let self = this;
+        axios
+        .post('https://pantao.ink/account/autologin',  
+          {
+            "id": self.password, 
+            "nick": self.username
+          }, 
+          {
+            headers: {
+            'Content-Type': 'application/json'
+        
+            }
+          }
+        )
+        .then(function(res) {
+          self.$toast(res);
+        })
+        .catch(function (error) {
+          console.log(error);
+          console.log("error: "+error.message);
+          self.$toast(error.message);
+          return false;
+        })
+      }
     },
   }
 </script>
