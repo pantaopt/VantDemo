@@ -19,8 +19,9 @@
         :rules="[{ required: true, message: '请填写密码' }]"
       />
       <div style="margin: 16px;">
-        <van-button block type="primary" native-type="submit" @click="onSubmit">
+        <van-button block type="primary" native-type="submit" @click="onSubmit" >
           提交
+        <van-loading type="spinner" class="loading" v-bind:style="{ display: loadingDisplay }"/>
         </van-button>
       </div>
     </van-form>
@@ -36,6 +37,7 @@
       return {
         username: '',
         password: '',
+        loadingDisplay: 'none',
       };
     },
     methods: {
@@ -47,7 +49,8 @@
         if (this.password.length <= 0) {
           this.$toast("密码不能为空");
           return false;  
-        }    
+        }
+        this.loadingDisplay = 'block';
         
         let self = this;
         
@@ -63,12 +66,14 @@
         })
         .then(function(res) {
           self.$toast("成功登录");
+          self.loadingDisplay = 'none';
           return true;
         })
         .catch(function (error) {
           console.log(error);
           console.log("error: "+error.message);
           self.$toast(error.message);
+          self.loadingDisplay = 'none';
           return false;
         })
       }
@@ -86,7 +91,10 @@
   background: url("../assets/background.jpeg") no-repeat;
   background-size:100% 100%;
 }
-.submit {
-  margin-top: 15px;
+.loading {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  display: block;
 }
 </style>

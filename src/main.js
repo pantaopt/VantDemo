@@ -21,6 +21,8 @@ import 'vant/lib/notify/style'
 import Toast from 'vant/lib/toast'
 import 'vant/lib/toast/style'
 
+import Loading from 'vant/lib/loading'
+import 'vant/lib/loading/style'
 
 import axios from 'axios'
 Vue.prototype.$axios=axios //定义为全局
@@ -34,6 +36,7 @@ Vue.use(Switch)
 Vue.use(Field)
 Vue.use(Notify)
 Vue.use(Toast)
+Vue.use(Loading)
 
 new Vue({
   el: '#app',
