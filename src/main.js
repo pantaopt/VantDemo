@@ -28,6 +28,8 @@ import axios from 'axios'
 Vue.prototype.$axios=axios //定义为全局
 //axios.defaults.baseURL = '/api'
 
+import router from './router/router'
+
 Vue.config.productionTip = false
 Vue.use(Button)
 Vue.use(CellGroup)
@@ -40,5 +42,6 @@ Vue.use(Loading)
 
 new Vue({
   el: '#app',
+  router,
   render: h => h(App)
 })

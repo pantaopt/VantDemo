@@ -67,6 +67,8 @@
         .then(function(res) {
           self.$toast("成功登录");
           self.loadingDisplay = 'none';
+          console.log(self.$router);
+          self.$router.push({name: 'Home'});
           return true;
         })
         .catch(function (error) {
@@ -85,7 +87,7 @@
 <style scoped>
 .container {
   background-color: #1f3134;
-  padding-top: 10px;
+  padding-top: 50px;
   width: calc(100vw);
   height: calc(100vh);
   background: url("../assets/background.jpeg") no-repeat;

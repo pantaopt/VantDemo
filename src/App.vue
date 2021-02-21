@@ -1,16 +1,20 @@
 <template>
   <div id="app">
-    <LoginPage/>
+    <transition name="slide-fade">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
 import LoginPage from './components/LoginPage'
+import HomePage from './components/HomePage'
 
 export default {
   name: 'App',
   components: {
-   LoginPage
+   LoginPage,
+   HomePage
   }
 }
 </script>
