@@ -1,9 +1,11 @@
 const express = require('express');
 const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 // Setup
 const app = express();
+
 const port = process.env['WEB_APP_PORT'];
 const config = require('./webpack.config.dev.js');
 const compiler = webpack(config);
@@ -20,6 +22,8 @@ app.use(middleware);
 app.get('/', (req, res) => {
   res.sendFile('public/index.html', { root: __dirname });
 });
+
+app.use(createProxyMiddleware({ target: 'https://pantao.ink/', changeOrigin: true }));
 
 // Launch app
 app.listen(port, () => {

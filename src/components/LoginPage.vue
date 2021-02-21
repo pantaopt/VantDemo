@@ -28,8 +28,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
-  import qs from 'qs'
+  import qs from 'qs';
 
   export default {
     name: 'LoginPage',
@@ -51,21 +50,20 @@
         }    
         
         let self = this;
-        axios
-        .post('https://pantao.ink/account/autologin',  
-          {
-            "id": self.password, 
-            "nick": self.username
-          }, 
-          {
-            headers: {
-            'Content-Type': 'application/json'
         
-            }
+        var params = {'id':self.password,'nick':self.username}
+        self.$axios(
+        {
+          method: 'post',
+          url: '/account/autologin',
+          data: params,
+          header: {
+            'Content-Type':'application/json'
           }
-        )
+        })
         .then(function(res) {
-          self.$toast(res);
+          self.$toast("成功登录");
+          return true;
         })
         .catch(function (error) {
           console.log(error);
@@ -85,7 +83,8 @@
   padding-top: 10px;
   width: calc(100vw);
   height: calc(100vh);
-  background: url("../assets/壁纸.jpg") no-repeat
+  background: url("../assets/background.jpeg") no-repeat;
+  background-size:100% 100%;
 }
 .submit {
   margin-top: 15px;

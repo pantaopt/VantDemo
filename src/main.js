@@ -21,6 +21,11 @@ import 'vant/lib/notify/style'
 import Toast from 'vant/lib/toast'
 import 'vant/lib/toast/style'
 
+
+import axios from 'axios'
+Vue.prototype.$axios=axios //定义为全局
+//axios.defaults.baseURL = '/api'
+
 Vue.config.productionTip = false
 Vue.use(Button)
 Vue.use(CellGroup)
