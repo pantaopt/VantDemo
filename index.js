@@ -6,7 +6,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 // Setup
 const app = express();
 
-const port = process.env['WEB_APP_PORT'];
+const port = process.env['WEB_APP_PORT'] || 9999;
 const config = require('./webpack.config.dev.js');
 const compiler = webpack(config);
 const middleware = webpackMiddleware(compiler, {

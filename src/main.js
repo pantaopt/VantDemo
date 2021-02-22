@@ -25,7 +25,7 @@ import Loading from 'vant/lib/loading'
 import 'vant/lib/loading/style'
 
 import axios from 'axios'
-Vue.prototype.$axios=axios //定义为全局
+Vue.prototype.$axios = axios //定义为全局
 //axios.defaults.baseURL = '/api'
 
 import router from './router/router'

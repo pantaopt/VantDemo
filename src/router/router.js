@@ -7,6 +7,7 @@ import Login from '../components/LoginPage'
 Vue.use(Router)
 
 export default new Router({
+  // mode: 'history',
   routes: [
     {
       path: '',
@@ -14,12 +15,12 @@ export default new Router({
     },
     {
       path: '/home',
-      name: 'Home',
+      name: '首页',
       component: Home
     },
     {
       path: '/login',
-      name: 'Login',
+      name: '登录',
       component: Login
     }
   ]
