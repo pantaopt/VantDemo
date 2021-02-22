@@ -48,11 +48,11 @@ export default {
     onSubmit(values) {
       if (this.username.length <= 0) {
         this.$toast("用户名不能为空");
-        // return false;
+        return false;
       }
       if (this.password.length <= 0) {
         this.$toast("密码不能为空");
-        // return false;
+        return false;
       }
       this.loadingDisplay = "block";
 
