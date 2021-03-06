@@ -24,6 +24,16 @@ import 'vant/lib/toast/style'
 import Loading from 'vant/lib/loading'
 import 'vant/lib/loading/style'
 
+import Swipe from 'vant/lib/swipe'
+import 'vant/lib/swipe/style'
+import SwipeItem from 'vant/lib/swipe-item'
+import 'vant/lib/swipe-item/style'
+
+import Popup from 'vant/lib/popup'
+import 'vant/lib/popup/style'
+
+import { Lazyload } from 'vant';
+
 import axios from 'axios'
 Vue.prototype.$axios = axios //定义为全局
 //axios.defaults.baseURL = '/api'
@@ -39,6 +49,10 @@ Vue.use(Field)
 Vue.use(Notify)
 Vue.use(Toast)
 Vue.use(Loading)
+Vue.use(Lazyload)
+Vue.use(Swipe)
+Vue.use(SwipeItem)
+Vue.use(Popup)
 
 new Vue({
   el: '#app',

@@ -3,6 +3,8 @@
     <transition :name="transitionName">
       <router-view></router-view>
     </transition>
+    <div class="menu" @click="showPopup">菜单</div>
+    <van-popup v-model="popShow" position="left" :style="{ background: '#2e2930' }" class="pop" closeable close-icon-position="top-left" />AAA</van-popup>
   </div>
 </template>
 
@@ -19,6 +21,7 @@ export default {
   data() {
     return {
       transitionName: "slide-left",
+      popShow: false,
     };
   },
   watch: {
@@ -45,6 +48,11 @@ export default {
       // console.log("[watch]this.transitionName: "+this.transitionName);
     },
   },
+  methods: {
+    showPopup() {
+      this.popShow = true;
+    }
+  }
 };
 </script>
 
@@ -99,5 +107,22 @@ export default {
 .slide-present-leave-to {
   transform: translate3d(0, -100%, 0);
   opacity: 0;
+}
+.menu {
+  position: fixed;
+  top: 5px;
+  left: 10px;
+  width: 50px;
+  height: 40px;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  font-size: 14px;
+  border-radius: 10px;
+  background: blue;
+}
+.pop {
+  width: 150px;
+  height: calc(100vh);
 }
 </style>
