@@ -4,7 +4,16 @@
       <router-view></router-view>
     </transition>
     <div class="menu" @click="showPopup">菜单</div>
-    <van-popup v-model="popShow" position="left" :style="{ background: '#2e2930' }" class="pop" closeable close-icon-position="top-left" />AAA</van-popup>
+    <van-popup
+      v-model="popShow"
+      position="left"
+      :style="{ background: '#2e2930' }"
+      class="pop"
+      closeable
+      close-icon-position="top-left"
+    >
+      <div class="popItem" @click="logout">退出</div>
+    </van-popup>
   </div>
 </template>
 
@@ -34,9 +43,11 @@ export default {
           "view-router"
         )[0].scrollTop;
       }
-      if (from.fullPath === "/login") {// 离开登录页，以类iOS的dismiss收起
+      if (from.fullPath === "/login") {
+        // 离开登录页，以类iOS的dismiss收起
         this.transitionName = "slide-dismiss";
-      } else if (to.fullPath === "/login") {// 进入登录页，以类iOS的present弹起
+      } else if (to.fullPath === "/login") {
+        // 进入登录页，以类iOS的present弹起
         this.transitionName = "slide-present";
       } else if (toLength < fromlength) {
         this.transitionName = "slide-left";
@@ -51,8 +62,21 @@ export default {
   methods: {
     showPopup() {
       this.popShow = true;
-    }
-  }
+    },
+    logout() {
+      this.popShow = false;
+      this.$dialog.confirm({
+        title: "提醒",
+        message: "确定要退出吗？",
+      })
+      .then(() => {
+        // on confirm
+      })
+      .catch(() => {
+        // on cancel
+      });
+    },
+  },
 };
 </script>
 
@@ -124,5 +148,12 @@ export default {
 .pop {
   width: 150px;
   height: calc(100vh);
+}
+.popItem {
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  height: 45px;
+  line-height: 45px;
 }
 </style>
