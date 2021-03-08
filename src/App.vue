@@ -3,7 +3,7 @@
     <transition :name="transitionName">
       <router-view></router-view>
     </transition>
-    <div class="menu" @click="showPopup">菜单</div>
+    <div class="menu" @click="showPopup" v-show="showMenu">菜单</div>
     <van-popup
       v-model="popShow"
       position="left"
@@ -31,10 +31,17 @@ export default {
     return {
       transitionName: "slide-left",
       popShow: false,
+      showMenu: (this.$route.fullPath != "/login"),
     };
   },
   watch: {
     $route(to, from) {
+      if (to.fullPath === "/login") {
+        this.showMenu = false;
+      }else {
+        this.showMenu = true;
+      }
+
       const toLength = to.fullPath.split("/").length; // 路由层级高向层级低动画返回，低到高前进
       const fromlength = from.fullPath.split("/").length;
       if (from.meta.keepAlive) {
@@ -71,6 +78,8 @@ export default {
       })
       .then(() => {
         // on confirm
+        localStorage.setItem("userInfo", null);
+        this.$router.push({ path: '/login' });
       })
       .catch(() => {
         // on cancel
@@ -143,7 +152,7 @@ export default {
   line-height: 40px;
   font-size: 14px;
   border-radius: 10px;
-  background: blue;
+  background: #1989fa;
 }
 .pop {
   width: 150px;

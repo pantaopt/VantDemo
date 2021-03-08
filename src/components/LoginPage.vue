@@ -72,8 +72,8 @@ export default {
           self.$toast("成功登录");
           self.loadingDisplay = "none";
           console.log(self.$router);
-          
-          let userInfo = JSON.stringify(res.data);
+
+          let userInfo = JSON.stringify(res.data.data);
           localStorage.setItem("userInfo", userInfo);
           
           self.$router.push({ path: '/home' });

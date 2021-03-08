@@ -32,7 +32,10 @@ import 'vant/lib/swipe-item/style'
 import Popup from 'vant/lib/popup'
 import 'vant/lib/popup/style'
 
-import { Lazyload, Dialog } from 'vant'
+import Dialog from 'vant/lib/dialog'
+import 'vant/lib/dialog/style'
+
+import { Lazyload } from 'vant'
 
 import axios from 'axios'
 Vue.prototype.$axios = axios //定义为全局
