@@ -3,7 +3,9 @@
     <transition :name="transitionName">
       <router-view></router-view>
     </transition>
-    <div class="menu" @click="showPopup" v-show="showMenu">菜单</div>
+    <div class="menu" @click="showPopup" v-show="showMenu">
+      <van-icon name="wap-nav" color="white" size="60"></van-icon>
+    </div>
     <van-popup
       v-model="popShow"
       position="left"
@@ -152,7 +154,7 @@ export default {
   line-height: 40px;
   font-size: 14px;
   border-radius: 10px;
-  background: #1989fa;
+  /* background: #1989fa; */
 }
 .pop {
   width: 150px;

@@ -35,6 +35,9 @@ import 'vant/lib/popup/style'
 import Dialog from 'vant/lib/dialog'
 import 'vant/lib/dialog/style'
 
+import Icon from 'vant/lib/icon'
+import 'vant/lib/icon/style'
+
 import { Lazyload } from 'vant'
 
 import axios from 'axios'
@@ -57,6 +60,7 @@ Vue.use(Swipe)
 Vue.use(SwipeItem)
 Vue.use(Popup)
 Vue.use(Dialog)
+Vue.use(Icon)
 
 new Vue({
   el: '#app',
